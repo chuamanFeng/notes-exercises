@@ -1,0 +1,41 @@
+#include <iostream>
+#include <algorithm>
+ 
+using namespace std;
+int main()
+{
+    long long n;
+    int k;
+    while(cin>>k)
+    {
+        cin>>n;
+        long long mini1,mini2,mini3;
+        long long maxi1,maxi2,maxi3;
+        mini1=maxi1=n;
+        cin>>n;
+        mini2=(n>0?mini1:maxi1)*n;
+        maxi2=(n>0?maxi1:mini1)*n;
+        maxi1=max(maxi1,n);
+        mini1=min(mini1,n);
+        cin>>n;
+        mini3=(n>0?mini2:maxi2)*n;
+        maxi3=(n>0?maxi2:mini2)*n;
+        mini2=(n>0?mini1:maxi1)*n;
+        maxi2=(n>0?maxi1:mini1)*n;
+        maxi1=max(maxi1,n);
+        mini1=min(mini1,n);
+        for(int i=3;i<k;i++)
+        {
+            cin>>n;
+            mini3=min(mini3,(n>0?mini2:maxi2)*n);
+            maxi3=max(maxi3,(n>0?maxi2:mini2)*n);
+            mini2=min(mini2,(n>0?mini1:maxi1)*n);
+            maxi2=max(maxi2,(n>0?maxi1:mini1)*n);
+            maxi1=max(maxi1,n);
+            mini1=min(mini1,n);
+        }
+        cout<<maxi3<<endl;
+    }
+   
+     
+}
